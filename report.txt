@@ -1,0 +1,23 @@
+team name : 
+KingOtto
+team members : 
+Georgios Sapountzakis
+Timon Gross
+Christos Siafarikas
+
+This project was about timeseries forecasting , meaning that our task was to train a neural network to predict
+future samples of a multivariate time series. We feed the network with past observations and we want it to learn 
+how to exploit them so as to predict the future . To be precise we use 7 categories {'Sponginess', 'Wonder level',
+'Crunchiness', 'Loudness on impact','Meme creativity', 'Soap slipperiness', 'Hype root'} with 68528 observations in
+each so a total of 479,696 samples dataset . We first inspect our dataset and provide the relevant plots before and
+after normalisation . One problem that we are from the start trying to solve is the selection of proper window length,
+stride and telescope numbers . After a lot of testing we concluding that best results happen using telescope 864 (direct forecasting)
+and window 200 , stride 20. Now about the model itself we tried a lot of different ones deep biderectional or not  LSTMs or GRUS ,
+with dropout layers and even tried to apply different attention mechanisms  but in the end the better results occured when 
+we used a simple RNN model followed just by a dense layer and a reshaping in the end so as for the output to have the
+appropriate dimentions . We used early stopping to avoid overfitting .
+A very important aspect of this project was also the preprocessing and postprocessing of the data. In the preprocessing part
+we selected the minimum and maximum number of each category independently and used them for normalisation in each category .
+Then for the postprocessing we denormalised the predictions .
+All in all if there is one thing that this project taught us is that a deep and complex network does not guarantee 
+a better result , but depending on the problem that we want to solve we should adapt our network accordingly.
